@@ -52,6 +52,9 @@ Please consider donating to our open collective to help us maintain RVM.
 
 
 $ echo "source $HOME/.rvm/scripts/rvm" >> scripts/activate
+
+echo "source $HOME/.rvm/scripts/rvm" >> scripts/activate
+
 $ . scripts/activate
 $ rvm autolibs disable
 $ rvm install ruby-2.4.2
@@ -62,20 +65,53 @@ $ rvm use 2.4.2 --default
 
 $ gem install travis
 
-Следующие НОВЫЕ пакеты будут установлены:
-  travis
-Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 3 пакетов не обновлено.
-Необходимо скачать 1 285 kB архивов.
-После данной операции объём занятого дискового пространства возрастёт на 3 583 kB.
-Пол:1 http://mirror-1.truenetwork.ru/kali kali-rolling/main amd64 travis amd64 190101-1 [1 285 kB]
-Получено 1 285 kB за 3с (384 kB/s)   
-Выбор ранее не выбранного пакета travis.
-(Чтение базы данных … на данный момент установлено 441830 файлов и каталогов.)
-Подготовка к распаковке …/travis_190101-1_amd64.deb …
-Распаковывается travis (190101-1) …
-Настраивается пакет travis (190101-1) …
-Обрабатываются триггеры для menu (2.1.47+b1) …
-Обрабатываются триггеры для man-db (2.8.5-2) …
+Fetching: faraday_middleware-0.13.1.gem (100%)
+Successfully installed faraday_middleware-0.13.1
+Fetching: highline-1.7.10.gem (100%)
+Successfully installed highline-1.7.10
+Fetching: backports-3.14.0.gem (100%)
+Successfully installed backports-3.14.0
+Fetching: addressable-2.4.0.gem (100%)
+Successfully installed addressable-2.4.0
+Fetching: net-http-pipeline-1.0.1.gem (100%)
+Successfully installed net-http-pipeline-1.0.1
+Fetching: gh-0.15.1.gem (100%)
+Successfully installed gh-0.15.1
+Fetching: launchy-2.4.3.gem (100%)
+Successfully installed launchy-2.4.3
+Fetching: typhoeus-0.8.0.gem (100%)
+Successfully installed typhoeus-0.8.0
+Fetching: websocket-1.2.8.gem (100%)
+Successfully installed websocket-1.2.8
+Fetching: pusher-client-0.6.2.gem (100%)
+Successfully installed pusher-client-0.6.2
+Fetching: travis-1.8.10.gem (100%)
+Successfully installed travis-1.8.10
+Parsing documentation for faraday_middleware-0.13.1
+Installing ri documentation for faraday_middleware-0.13.1
+Parsing documentation for highline-1.7.10
+Installing ri documentation for highline-1.7.10
+Parsing documentation for backports-3.14.0
+Installing ri documentation for backports-3.14.0
+Parsing documentation for addressable-2.4.0
+Installing ri documentation for addressable-2.4.0
+Parsing documentation for net-http-pipeline-1.0.1
+Installing ri documentation for net-http-pipeline-1.0.1
+Parsing documentation for gh-0.15.1
+Installing ri documentation for gh-0.15.1
+Parsing documentation for launchy-2.4.3
+Installing ri documentation for launchy-2.4.3
+Parsing documentation for typhoeus-0.8.0
+Installing ri documentation for typhoeus-0.8.0
+Parsing documentation for websocket-1.2.8
+Installing ri documentation for websocket-1.2.8
+Parsing documentation for pusher-client-0.6.2
+Installing ri documentation for pusher-client-0.6.2
+Parsing documentation for travis-1.8.10
+Installing ri documentation for travis-1.8.10
+Done installing documentation for faraday_middleware, highline, backports, addressable, net-http-pipeline, gh, launchy, typhoeus, websocket, pusher-client, travis after 7 seconds
+11 gems installed
+
 
 ```
 
@@ -125,33 +161,130 @@ EOF
 
 ```ShellSession
 $ travis login --github-token ${GITHUB_TOKEN}
+
+Successfully logged in as Mihailus2000!
+
 ```
 
 ```ShellSession
 $ travis lint
+
+Warnings for .travis.yml:
+[x] value for addons section is empty, dropping
+[x] in addons section: unexpected key apt, dropping
+
 ```
 
 ```ShellSession
-$ ex -sc '1i|<фрагмент_вставки_значка>' -cx README.md
+$ ex -sc '1i|[![Build Status](https://travis-ci.org/Mihailus2000/lab04F.svg?branch=master)](https://travis-ci.org/Mihailus2000/lab04F)' -cx README.md
+
 ```
 
 ```ShellSession
 $ git add .travis.yml
 $ git add README.md
 $ git commit -m"added CI"
+
+[master ff1af40] added CI
+ 1 file changed, 14 insertions(+)
+ create mode 100644 .travis.yml
+
 $ git push origin master
+
+Username for 'https://github.com': Mihailus2000
+Password for 'https://Mihailus2000@github.com': 
+Перечисление объектов: 36, готово.
+Подсчет объектов: 100% (36/36), готово.
+При сжатии изменений используется до 4 потоков
+Сжатие объектов: 100% (31/31), готово.
+Запись объектов: 100% (36/36), 11.46 KiB | 2.87 MiB/s, готово.
+Всего 36 (изменения 10), повторно использовано 0 (изменения 0)
+remote: Resolving deltas: 100% (10/10), done.
+To https://github.com/Mihailus2000/lab04
+ * [new branch]      master -> master
+
 ```
 
 ```ShellSession
 $ travis lint
+
+Warnings for .travis.yml:
+[x] value for addons section is empty, dropping
+[x] in addons section: unexpected key apt, dropping
+
 $ travis accounts
+
+Mihailus2000 (Mihailus2000): subscribed, 11 repositories
+
 $ travis sync
+
+synchronizing: .. done
+
 $ travis repos
+
+Mihailus2000/First (active: no, admin: yes, push: yes, pull: yes)
+Description: Start
+
+Mihailus2000/HW1-Sem2- (active: no, admin: yes, push: yes, pull: yes)
+Description: ???
+
+Mihailus2000/MGTU_BAIMANA_Mihail (active: no, admin: yes, push: yes, pull: yes)
+Description: ???
+
+Mihailus2000/lab00 (active: no, admin: yes, push: yes, pull: yes)
+Description: Изучение систем обмена данными
+
+Mihailus2000/lab01 (active: no, admin: yes, push: yes, pull: yes)
+Description: Изучение утилит для разработки проектов
+
+Mihailus2000/lab02 (active: no, admin: yes, push: yes, pull: yes)
+Description: ???
+
+Mihailus2000/lab02-1 (active: no, admin: yes, push: yes, pull: yes)
+Description: Изучение систем контроля версий на примере Git
+
+Mihailus2000/lab03 (active: no, admin: yes, push: yes, pull: yes)
+Description: ???
+
+Mihailus2000/lab03Forked (active: no, admin: yes, push: yes, pull: yes)
+Description: Изучение систем автоматизации сборки проекта на примере CMake
+
+Mihailus2000/lab04 (active: yes, admin: yes, push: yes, pull: yes)
+Description: ???
+
+Mihailus2000/lab04F (active: no, admin: yes, push: yes, pull: yes)
+Description: Изучение систем непрерывной интеграции на примере сервиса Travis CI
+
 $ travis enable
+
+Detected repository as Mihailus2000/lab04, is this correct? |yes| yes
+Mihailus2000/lab04: enabled :)
+
 $ travis whatsup
+
+Mihailus2000/lab04 passed: #1
+
 $ travis branches
+
+master:  #1    passed     added CI
+
 $ travis history
+
+#1 passed:       master added CI
+
 $ travis show
+
+Job #1.1:  added CI
+State:         passed
+Type:          push
+Branch:        master
+Compare URL:   https://github.com/Mihailus2000/lab04/compare/0697494e977f^...1e17cb84a967
+Duration:      54 sec
+Started:       2019-05-13 18:35:49
+Finished:      2019-05-13 18:36:43
+Allow Failure: false
+Config:        os: linux
+
 ```
 
 ## Report
