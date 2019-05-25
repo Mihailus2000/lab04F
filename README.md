@@ -12,29 +12,29 @@ $ open https://travis-ci.org
 - [x] 2. Создать публичный репозиторий с названием **lab04** на сервисе **GitHub**
 - [x] 3. Ознакомиться со ссылками учебного материала
 - [x] 4. Включить интеграцию сервиса **Travis CI** с созданным репозиторием
-- [ ] 5. Получить токен для **Travis CLI** с правами **repo** и **user**
-- [ ] 6. Получить фрагмент вставки значка сервиса **Travis CI** в формате **Markdown**
-- [ ] 7. Выполнить инструкцию учебного материала
-- [ ] 8. Составить отчет и отправить ссылку личным сообщением в **Slack**
+- [x] 5. Получить токен для **Travis CLI** с правами **repo** и **user**
+- [x] 6. Получить фрагмент вставки значка сервиса **Travis CI** в формате **Markdown**
+- [x] 7. Выполнить инструкцию учебного материала
+- [x] 8. Составить отчет и отправить ссылку личным сообщением в **Slack**
 
 ## Tutorial
 
 ```ShellSession
-$ export GITHUB_USERNAME=<имя_пользователя>
-$ export GITHUB_TOKEN=<полученный_токен>
+$ export GITHUB_USERNAME=<имя_пользователя>    # Установка переменной окружения GITHUB_USERNAME
+$ export GITHUB_TOKEN=<полученный_токен>       # Установка переменной окружения GITHUB_TOKEN
 ```
 
 ```ShellSession
-$ cd ${GITHUB_USERNAME}/workspace
-$ pushd .
+$ cd ${GITHUB_USERNAME}/workspace    # Переход в рабочую директорию
+$ pushd .                            # Сохранение текущей директории
 
 ~/Mihailus2000/workspace ~/Mihailus2000/workspace
 
-$ source scripts/activate
+$ source scripts/activate            # Выполнение скрипта настройки рабочего пространства
 ```
 
 ```ShellSession
-$ \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+$ \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles     # Получение и выполнение установочного bash-файла
 
 ignore-dotfiles
 Turning on ignore dotfiles mode.
@@ -51,19 +51,50 @@ Please consider donating to our open collective to help us maintain RVM.
 
 
 
-$ echo "source $HOME/.rvm/scripts/rvm" >> scripts/activate
+$ echo "source $HOME/.rvm/scripts/rvm" >> scripts/activate    # Дописывание в scripts/activate команду для выполнения скрипта запуска rvm
+$ . scripts/activate          # Выполнение активационного скрипта
+$ rvm autolibs disable        # Отключение автоматического подключения библиотек 
+$ rvm install ruby      # Установка ruby через rvm (Command changed, because not working it on Kali Linux)
 
-echo "source $HOME/.rvm/scripts/rvm" >> scripts/activate
+Searching for binary rubies, this might take some time.
+No binary rubies available for: kali/kali-rolling/x86_64/ruby-2.6.3.
+Continuing with compilation. Please read 'rvm help mount' to get more information on binary rubies.
+Installing Ruby from source to: /home/mihailus/.rvm/rubies/ruby-2.6.3, this may take a while depending on your cpu(s)...
+ruby-2.6.3 - #downloading ruby-2.6.3, this may take a while depending on your connection...
+ruby-2.6.3 - #extracting ruby-2.6.3 to /home/mihailus/.rvm/src/ruby-2.6.3.....
+ruby-2.6.3 - #configuring.......................................................................
+ruby-2.6.3 - #post-configuration..
+ruby-2.6.3 - #compiling..........................................................................................
+ruby-2.6.3 - #installing..................
+ruby-2.6.3 - #making binaries executable..
+Rubygems 3.0.3 already available in installed ruby, skipping installation, use --force to reinstall.
+ruby-2.6.3 - #gemset created /home/mihailus/.rvm/gems/ruby-2.6.3@global
+ruby-2.6.3 - #importing gemset /home/mihailus/.rvm/gemsets/global.gems..................there was an error installing gem gem-wrappers
+..................there was an error installing gem rubygems-bundler
+........................there was an error installing gem rvm
+.......
+ruby-2.6.3 - #generating global wrappers.................
+Error running 'run_gem_wrappers regenerate',
+please read /home/mihailus/.rvm/log/1558774975_ruby-2.6.3/gemset.wrappers.global.log
+ruby-2.6.3 - #gemset created /home/mihailus/.rvm/gems/ruby-2.6.3
+ruby-2.6.3 - #importing gemsetfile /home/mihailus/.rvm/gemsets/default.gems evaluated to empty gem list
+ruby-2.6.3 - #generating default wrappers.................
+Error running 'run_gem_wrappers regenerate',
+please read /home/mihailus/.rvm/log/1558774975_ruby-2.6.3/gemset.wrappers.default.log
+ruby-2.6.3 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+Install of ruby-2.6.3 - #complete 
+Ruby was built without documentation, to build it run: rvm docs generate-ri
 
-$ . scripts/activate
-$ rvm autolibs disable
-$ rvm install ruby-2.4.2
+$ root@Mihailus-PC:/home/mihailus# rvm docs generate-ri                        # Установка документации к ruby
 
+ruby-2.4.2 - #downloading ruby-2.4.2, this may take a while depending on your connection...
+ruby-2.4.2 - #extracting ruby-2.4.2 to /home/mihailus/.rvm/src/ruby-2.4.2.....
+Generating ri documentation..........................................................................................................................-
 # already unstall
 
-$ rvm use 2.4.2 --default
+$ rvm use 2.4.2 --default               # Установка установленной версии как основной
 
-$ gem install travis
+$ gem install travis                    # Установка travis (с помощью пакета ruby)
 
 Fetching: faraday_middleware-0.13.1.gem (100%)
 Successfully installed faraday_middleware-0.13.1
@@ -116,7 +147,7 @@ Done installing documentation for faraday_middleware, highline, backports, addre
 ```
 
 ```ShellSession
-$ git clone https://github.com/${GITHUB_USERNAME}/lab03 projects/lab04
+$ git clone https://github.com/${GITHUB_USERNAME}/lab03 projects/lab04      # Клонирование репозитория
 
 Клонирование в «projects/lab04»…
 remote: Enumerating objects: 33, done.
@@ -125,18 +156,18 @@ remote: Compressing objects: 100% (19/19), done.
 remote: Total 33 (delta 9), reused 33 (delta 9), pack-reused 0
 Распаковка объектов: 100% (33/33), готово.
 
-$ cd projects/lab04
-$ git remote remove origin
-$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab04
+$ cd projects/lab04                                                          # Переход в указанную директорию
+$ git remote remove origin                                                   # Удаление связи с репозиторием
+$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab04          # Добавление связи с репозиторием lab04
 ```
-
+Запись в файл информации о языке программирования
 ```ShellSession
-$ cat > .travis.yml <<EOF
+$ cat > .travis.yml <<EOF     # Запись в файл
 language: cpp
 EOF
 ```
-
-```ShellSession
+Дописывание в файл команд, выполняющихся при  интеграции
+```ShellSession               # Запись в файл
 $ cat >> .travis.yml <<EOF
 
 script:
@@ -146,8 +177,9 @@ script:
 EOF
 ```
 
+Дописывание в файл информации об пакетах
 ```ShellSession
-$ cat >> .travis.yml <<EOF
+$ cat >> .travis.yml <<EOF   # Запись в файл
 
 addons:
   apt:
@@ -159,37 +191,38 @@ addons:
 EOF
 ```
 
+Авторизация в travis по токену
 ```ShellSession
-$ travis login --github-token ${GITHUB_TOKEN}
+$ travis login --github-token ${GITHUB_TOKEN}      # Авторизация
 
 Successfully logged in as Mihailus2000!
 
 ```
 
+Проверка конфига
 ```ShellSession
-$ travis lint
-
+$ travis lint     # Команда проверки
 Warnings for .travis.yml:
 [x] value for addons section is empty, dropping
 [x] in addons section: unexpected key apt, dropping
 
 ```
-
+Добавлее в начало файла строки со статусом travis
 ```ShellSession
-$ ex -sc '1i|[![Build Status](https://travis-ci.org/Mihailus2000/lab04F.svg?branch=master)](https://travis-ci.org/Mihailus2000/lab04F)' -cx README.md
+$ ex -sc '1i|[![Build Status](https://travis-ci.org/Mihailus2000/lab04F.svg?branch=master)](https://travis-ci.org/Mihailus2000/lab04F)' -cx README.md  # Применение преобразований 
 
 ```
-
+Отправка изменений на удалённйый репозиторий
 ```ShellSession
-$ git add .travis.yml
-$ git add README.md
-$ git commit -m"added CI"
+$ git add .travis.yml       # Фиксация .travis.yml
+$ git add README.md         # Фиксация README.md
+$ git commit -m"added CI"   # Коммит изменений с комментарием
 
 [master ff1af40] added CI
  1 file changed, 14 insertions(+)
  create mode 100644 .travis.yml
 
-$ git push origin master
+$ git push origin master    # Отправка изменений ветки в удаленный репозиторий
 
 Username for 'https://github.com': Mihailus2000
 Password for 'https://Mihailus2000@github.com': 
@@ -205,22 +238,23 @@ To https://github.com/Mihailus2000/lab04
 
 ```
 
+Работа с Travis CI
 ```ShellSession
-$ travis lint
+$ travis lint   # Команда проверки
 
 Warnings for .travis.yml:
 [x] value for addons section is empty, dropping
 [x] in addons section: unexpected key apt, dropping
 
-$ travis accounts
+$ travis accounts      # Получение информации об аккаунтах
 
 Mihailus2000 (Mihailus2000): subscribed, 11 repositories
 
-$ travis sync
+$ travis sync          # Синхронизация
 
 synchronizing: .. done
 
-$ travis repos
+$ travis repos         # Получение списка репозиториев
 
 Mihailus2000/First (active: no, admin: yes, push: yes, pull: yes)
 Description: Start
@@ -255,24 +289,24 @@ Description: ???
 Mihailus2000/lab04F (active: no, admin: yes, push: yes, pull: yes)
 Description: Изучение систем непрерывной интеграции на примере сервиса Travis CI
 
-$ travis enable
+$ travis enable      # Активация проекта
 
 Detected repository as Mihailus2000/lab04, is this correct? |yes| yes
 Mihailus2000/lab04: enabled :)
 
-$ travis whatsup
+$ travis whatsup     # Список сборок
 
 Mihailus2000/lab04 passed: #1
-
-$ travis branches
+ 
+$ travis branches    # Список сборок по веткам проекта
 
 master:  #1    passed     added CI
 
-$ travis history
+$ travis history     # Вывод истории сборок
 
 #1 passed:       master added CI
 
-$ travis show
+$ travis show       # Вывод всей информации о последней сборке
 
 Job #1.1:  added CI
 State:         passed
